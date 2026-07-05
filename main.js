@@ -6,15 +6,12 @@ const SITE_CONFIG = {
   brand: "EtherealPE",
   accessGate: {
     enabled: true,
-    // Default phrase is: glacia
-    // To change it, generate a new SHA-256 hash for your phrase and replace this value.
     passphraseHash: "ee961d61958c505ea7805c231512dadb1b867344b19447449f5fbb63fa7512be",
-    devPassphrase: "glacia", // fallback for local file testing only; remove before real use if wanted
     sessionKey: "etherealpe_access_unlocked"
   },
   server: {
     javaAddress: "glacia.etherealpe.com",
-    javaPort: "", // leave empty if SRV/default works, otherwise "21386"
+    javaPort: "", 
     bedrockAddress: "glacia.etherealpe.com",
     bedrockPort: "19132",
     bedrockName: "EtherealPE"
@@ -97,17 +94,26 @@ function initAccessGate() {
     return;
   }
 
+  input.focus({ preventScroll: true });
+
+  let verifyInFlight = false;
+
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
+    if (verifyInFlight) return;
 
-    const phrase = input.value.trim();
+    const phrase = normalizeAccessPhrase(input.value);
     if (!phrase) {
       setGateStatus("Signal missing. Enter the access phrase.", "denied");
       return;
     }
 
+    verifyInFlight = true;
+    input.disabled = true;
     setGateStatus("Checking signal...", "");
     const ok = await verifyAccessPhrase(phrase);
+    verifyInFlight = false;
+    input.disabled = false;
 
     if (ok) {
       setGateStatus("Signal accepted. Opening portal...", "accepted");
@@ -119,6 +125,12 @@ function initAccessGate() {
       card?.classList.remove("shake");
       void card?.offsetWidth;
       card?.classList.add("shake");
+    }
+  });
+
+  input.addEventListener("input", () => {
+    if (status.classList.contains("denied")) {
+      setGateStatus("Awaiting signal...", "");
     }
   });
 
@@ -139,19 +151,26 @@ function initAccessGate() {
 async function verifyAccessPhrase(phrase) {
   const target = SITE_CONFIG.accessGate.passphraseHash?.toLowerCase();
 
-  if (window.crypto?.subtle && target) {
-    const hash = await sha256Hex(phrase);
-    return hash === target;
+  if (!target) {
+    return false;
   }
 
-  // Local fallback for file:// testing. For real security, use server-side auth or Cloudflare Access.
-  return phrase === SITE_CONFIG.accessGate.devPassphrase;
+  if (!window.crypto?.subtle) {
+    return false;
+  }
+
+  const hash = await sha256Hex(phrase);
+  return hash === target;
 }
 
 async function sha256Hex(value) {
   const bytes = new TextEncoder().encode(value);
   const digest = await crypto.subtle.digest("SHA-256", bytes);
   return [...new Uint8Array(digest)].map((b) => b.toString(16).padStart(2, "0")).join("");
+}
+
+function normalizeAccessPhrase(value) {
+  return String(value ?? "").trim();
 }
 
 function hydrateStaticText() {
