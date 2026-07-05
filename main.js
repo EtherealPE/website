@@ -17,7 +17,7 @@ const SITE_CONFIG = {
     bedrockName: "EtherealPE"
   },
   links: {
-    discord: "https://discord.gg/REPLACE_ME",
+    discord: "https://discord.gg/Z2ZsbvZkbc",
     store: "#",
     vote: "https://vote.etherealpe.com"
   },
@@ -51,10 +51,10 @@ const SITE_CONFIG = {
     }
   ],
   votes: [
-    { name: "Vote Site 1", url: "https://example.com/vote-1", reward: "Vote Key + Tokens" },
-    { name: "Vote Site 2", url: "https://example.com/vote-2", reward: "Vote Key + Streak Progress" },
-    { name: "Vote Site 3", url: "https://example.com/vote-3", reward: "Frozen Fortune Progress" },
-    { name: "Vote Site 4", url: "https://example.com/vote-4", reward: "Bonus Crate Chance" }
+    { name: "Vote Site 1", url: "https://minecraftpocket-servers.com/server/133199/", reward: "Vote Lootbox + $100,000 in-game money" },
+    { name: "Vote Site 2", url: "https://example.com/vote-2", reward: "Vote Lootbox + $100,000 in-game money" },
+    { name: "Vote Site 3", url: "https://example.com/vote-3", reward: "Vote Lootbox + $100,000 in-game money" },
+    { name: "Vote Site 4", url: "https://example.com/vote-4", reward: "Vote Lootbox + $100,000 in-game money" }
   ]
 };
 
