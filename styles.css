@@ -1,6 +1,4 @@
-/* EtherealPE Portal Styles
-   Theme: dark space / purple-black / white highlights
-*/
+/* EtherealPE Portal Styles*/
 
 :root {
   --bg: #05040b;
@@ -89,9 +87,11 @@ body.gate-locked {
 body.gate-locked .site-header,
 body.gate-locked main,
 body.gate-locked .footer {
-  filter: blur(12px);
+  opacity: 0.28;
+  transform: scale(.995);
   pointer-events: none;
   user-select: none;
+  transition: opacity .18s var(--ease), transform .18s var(--ease);
 }
 
 .sr-only {
@@ -117,7 +117,7 @@ body.gate-locked .footer {
     radial-gradient(circle at 50% 18%, rgba(141, 92, 255, .28), transparent 28rem),
     radial-gradient(circle at 75% 70%, rgba(126, 231, 255, .10), transparent 25rem),
     rgba(3, 2, 8, .92);
-  backdrop-filter: blur(18px);
+  backdrop-filter: blur(8px);
   transition: opacity .55s var(--ease), visibility .55s var(--ease);
 }
 
@@ -242,6 +242,10 @@ body.gate-locked .footer {
   color: var(--white);
   outline: none;
   background: rgba(0,0,0,.28);
+  -webkit-appearance: none;
+  appearance: none;
+  will-change: border-color, box-shadow, background;
+  transform: translateZ(0);
   transition: border-color .18s var(--ease), box-shadow .18s var(--ease), background .18s var(--ease);
 }
 
