@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EtherealPE | Minecraft Network</title>
+  <meta name="description" content="EtherealPE Minecraft network portal. Join Glacia on Java or Bedrock, vote, and follow updates." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="gate-locked">
+  <section class="access-gate" id="access-gate" aria-label="EtherealPE access gate">
+    <div class="gate-bg" aria-hidden="true"></div>
+    <div class="gate-card">
+      <img class="gate-logo" src="assets/ethereal-logo.jpg" alt="EtherealPE logo">
+      <span class="gate-kicker">EtherealPE Access Node</span>
+      <h1>Portal Sealed</h1>
+      <p>This preview is locked to trusted staff. Enter the access phrase to continue.</p>
+      <form class="gate-form" id="access-gate-form" autocomplete="off">
+        <label class="sr-only" for="access-phrase">Access phrase</label>
+        <input id="access-phrase" name="access-phrase" type="password" placeholder="Access Phrase" autocomplete="off" />
+        <button class="btn btn-primary" type="submit">Unlock Portal</button>
+      </form>
+      <p class="gate-status" id="access-gate-status">Awaiting signal...</p>
+    </div>
+  </section>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="EtherealPE home">
+        <img class="brand-mark" src="assets/ethereal-logo.jpg" alt="EtherealPE logo">
+        <span class="brand-text"><span class="brand-name">EtherealPE</span><span class="brand-sub">Space themed Minecraft network</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#home" class="active">Home</a><a href="#realms">Realms</a><a href="#play">Play</a><a href="#vote">Vote</a><a href="#updates">Updates</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="btn btn-ghost" data-link="discord" href="#">Discord</a>
+        <a class="btn btn-primary" href="#play">Play Now</a>
+        <button class="btn btn-ghost mobile-menu-btn" aria-label="Open menu" aria-expanded="false">Menu</button>
+      </div>
+    </div>
+  </header>
+  <main id="home">
+    <section class="hero section" id="home-section">
+      <div class="container hero-grid">
+        <div>
+          <span class="kicker">Glacia launch portal</span>
+          <h1><span class="gradient-text">EtherealPE</span></h1>
+          <p class="hero-copy">A dark cosmic Minecraft network built for Java and Bedrock. Explore Glacia, an ice planet realm with factions, bosses, custom gear, pets, runes, rings, and seasonal progression.</p>
+          <div class="hero-actions"><a class="btn btn-primary" href="#play">Join Glacia</a><a class="btn btn-ghost" href="#realms">View Realms</a><a class="btn btn-ice" href="#vote">Vote Rewards</a></div>
+          <div class="hero-stats"><div class="stat-card"><div class="stat-value">Java</div><div class="stat-label">Paper server</div></div><div class="stat-card"><div class="stat-value">Bedrock</div><div class="stat-label">Geyser support</div></div><div class="stat-card"><div class="stat-value">Glacia</div><div class="stat-label">First realm</div></div></div>
+        </div>
+        <div class="logo-card" aria-hidden="true"><span class="orbit"></span><img src="assets/ethereal-logo.jpg" alt=""></div>
+      </div>
+    </section>
+    <section class="section" id="realms"><div class="container"><div class="section-head"><div><h2 class="section-title">Realms</h2><p class="section-copy">EtherealPE is planned as a network of realms. Glacia is the first revealed world.</p></div></div><div class="realm-grid" data-realms-grid></div></div></section>
+    <section class="section" id="play"><div class="container"><div class="section-head"><div><h2 class="section-title">Play Glacia</h2><p class="section-copy">Pick your platform. Bedrock has a quick add button, but manual IP and port are always shown too.</p></div></div><div class="platform-panel" data-reveal><div class="platform-tabs" role="tablist"><button class="tab-btn active" data-platform-tab="java">Java Edition</button><button class="tab-btn" data-platform-tab="bedrock">Bedrock Edition</button></div><div class="platform-view active" data-platform-view="java"><h3>Java Edition</h3><p class="section-copy">Open Multiplayer, add a server, then paste the address below.</p><div class="server-box"><div class="copy-row"><span class="copy-label">Address</span><span class="copy-value" data-java-address></span><button class="copy-btn" data-copy="java">Copy</button></div></div></div><div class="platform-view" data-platform-view="bedrock"><h3>Bedrock Edition</h3><p class="section-copy">Add an external server with this address and port.</p><div class="server-box"><div class="copy-row"><span class="copy-label">Name</span><span class="copy-value">EtherealPE</span><button class="copy-btn" data-copy="EtherealPE">Copy</button></div><div class="copy-row"><span class="copy-label">Address</span><span class="copy-value" data-bedrock-address></span><button class="copy-btn" data-copy="bedrock-address">Copy</button></div><div class="copy-row"><span class="copy-label">Port</span><span class="copy-value" data-bedrock-port></span><button class="copy-btn" data-copy="bedrock-port">Copy</button></div></div><div class="hero-actions"><a class="btn btn-primary" data-bedrock-deeplink href="#">Open in Minecraft</a><button class="btn btn-ghost" data-copy="bedrock-full">Copy Full Address</button></div></div></div></div></section>
+    <section class="section" id="vote"><div class="container"><div class="section-head"><div><h2 class="section-title">Vote Rewards</h2><p class="section-copy">Vote on each site to support EtherealPE and earn launch rewards.</p></div></div><div class="vote-grid" data-vote-grid></div></div></section>
+    <section class="section" id="updates"><div class="container"><div class="news-grid"><article class="panel" data-reveal><h3>What is Glacia?</h3><p>Glacia is the first EtherealPE realm: an ice planet factions experience with PvE bosses, custom items, economy progression, voting rewards, and Java + Bedrock support.</p></article><aside class="panel" data-reveal><h3>Coming Later</h3><ul><li>Live player count</li><li>Patch notes</li><li>Realm wiki</li><li>Store links</li><li>Vote streak page</li></ul></aside></div></div></section>
+  </main>
+  <footer class="footer"><div class="container footer-inner"><span>© <span data-year></span> EtherealPE. Not affiliated with Mojang or Microsoft.</span><span>Glacia is the first revealed realm.</span></div></footer>
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script src="main.js"></script>
+</body>
+</html>
